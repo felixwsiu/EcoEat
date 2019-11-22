@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Super memebot</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body >
+<div class="container" align="center">
+  <h1 class="display-1 text-success">Memebot Menu</h1>
+  <h1>Upload Your Food</h1>
+  <input id="myFileInput" style="margin:35px 0px 35px 120px" type="file" accept="image/*;capture=camera">
+
+  <script>
+  	var myInput = document.getElementById('myFileInput');
+
+	function receivedPic() {
+	    var file = myInput.files[0];
+	    console.log('File Retrieved : '+file.name);
+	}
+
+	myInput.addEventListener('change', receivedPic, false);
+  </script>
+  <script src="js/Retrieved.js"></script>
+</div>
+
+</body>
+</html>
