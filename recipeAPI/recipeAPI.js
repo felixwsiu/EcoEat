@@ -1,6 +1,7 @@
 const request = require('request-promise');
+const AuthKey = require('./apiKey.js');
 
-const apiKey = '336e735e72d444798cba57e7d1fc90c5';
+const apiKey = AuthKey.getApiKey();
 
 function fetchFoodIds(incompleteFoodName) {
     const options = {
@@ -32,9 +33,7 @@ function fetchFoodId(foodIds, incompleteFoodName) {
     for (var foodItem of foodIdsJSON) {
         if (foodItem.title === incompleteFoodName) {
             found = true;
-            console.log('before fetching food ingredients!');
             return fetchFoodIngredients(foodItem.id).then(foodIngredients => {
-                console.log('after fetching food ingredients');
                 return foodIngredients;
             }).catch(error => {
                 console.log(error);
@@ -44,7 +43,7 @@ function fetchFoodId(foodIds, incompleteFoodName) {
     }
     if (!found) {
         console.log('did not find exact, returning closest match '+ foodIdsJSON[0].id);
-        fetchFoodIngredients(foodIdsJSON[0].id);
+        return fetchFoodIngredients(foodIdsJSON[0].id);
     }
 }
 
@@ -57,7 +56,6 @@ function fetchFoodIngredients(foodID) {
         method: 'GET'
     }
     return request(options).then(body => {
-        console.log('got food ingredients');
         let parsedJSON = [];
         const bodyJSON = JSON.parse(body);
         for (var item of bodyJSON.ingredients) {
@@ -65,7 +63,6 @@ function fetchFoodIngredients(foodID) {
             itemJSON.push({name: item.name, amount: item.amount.metric});
             parsedJSON.push(itemJSON);
         }
-        console.log('sending parsed JSON');
         return bodyJSON.ingredients;
     }).catch(error => {
         console.log(error);
@@ -73,7 +70,7 @@ function fetchFoodIngredients(foodID) {
     });
 }
 
-fetchFoodIds('chicken');
+fetchFoodIds('spaghetti');
 
 
 
