@@ -5,6 +5,7 @@ function receivedPic() {
 	var file = myInput.files[0];
 	console.log('File Retrieved : '+file.name);
 	document.getElementById('file').innerHTML = file;
+	document.getElementById('ecoquote').innerHTML = 'ready'
 
 	//document.getElementById('i1').innerHTML = "Pork"
 		// document.getElementById('c1').innerHTML = "10g"

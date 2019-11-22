@@ -34,6 +34,45 @@
   <h3 id="totalemission">Emission Produced/g: </h1>
   <h3 id="totalemission2">Average Grams/meal: </h1>
   <h3 id="totalemission3">Total Emission Produced: </h1> 
+  <h1 id="ecoquote"></h1>
+  <script> 
+    function typeEffect(element, speed) {
+      var text = element.innerHTML;
+      element.innerHTML = "";
+        
+      var i = 0;
+        var timer = setInterval(function() {
+          if (i < text.length) {
+            element.append(text.charAt(i));
+            i++;
+          } else {
+            clearInterval(timer);
+          }
+        }, speed);
+      }
+
+      // application
+      var speed = 75;
+      var h1 = document.querySelector('h1');
+      var p = document.querySelector('p');
+      var delay = h1.innerHTML.length * speed + speed;
+
+      // type affect to header
+      typeEffect(h1, speed);
+
+
+      // type affect to body
+      setTimeout(function(){
+        p.style.display = "inline-block";
+        typeEffect(p, speed);
+      }, delay);
+
+      var quote = document.getElementById('ecoquote');
+      quote.addEventListener('DOMContentLoaded',typeEffect(h1,speed));
+
+  </script>
+
+
 
 
   <script type="text/javascript" src="/retrieved"> </script>
