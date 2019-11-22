@@ -1,22 +1,11 @@
 
-
 var myInput = document.getElementById('myFileInput');
 
 function receivedPic() {
 	var file = myInput.files[0];
 	console.log('File Retrieved : '+file.name);
+	document.getElementById('file').innerHTML = file;
 
-	//Running object recognition on image
-
-	//Scrape ingredients from recipes
-	async function getIng(){
-		const res = await recipeAPI('chicken');
-		console.log(res)
-	}
-	getIng();
-	//Calculate total carbon emission from ingredients
-
-	//Create metrics for awareness
 	//document.getElementById('i1').innerHTML = "Pork"
 		// document.getElementById('c1').innerHTML = "10g"
 		// document.getElementById('nameoffood').innerHTML = "Meatballs"
