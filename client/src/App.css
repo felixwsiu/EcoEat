@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Titan+One');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
+
+body {
+  background-color: #81c784;
+}
+.App {
+  text-align: center;
+  background-color: #81c784;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.Camera-icon {
+  height: 25vmin;
+}
+
+.Show-text {
+  font-family: 'Source Code Pro', monospace;
+  font-size: calc(5px + 2vmin);
+}
+
+.Show-text-type {
+  margin-top: 50px;
+  display: block;
+  color: white;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: calc(5px + 2vmin);
+  text-align: center;
+}
+
+.inslogo {
+  height: 20px;
+  /* width: 10px; */
+  margin-top: 10px;
+  margin-left: 175px;
+}
+
+.App-header {
+  background-color: #81c784;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color:whitesmoke;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.title {
+  font-size: calc(40px + 2vmin);
+  font-family:'Titan One',cursive;
+}
