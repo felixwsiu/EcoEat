@@ -12,6 +12,7 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1"
+    "@google-cloud/vision": "^1.7.2"
   },
   "description": "Polar Bear vs. Narwhal",
   "main": "index.js",
