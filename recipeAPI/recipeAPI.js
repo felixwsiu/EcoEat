@@ -3,7 +3,7 @@ const AuthKey = require('./apiKey.js');
 
 const apiKey = AuthKey.getApiKey();
 
-function fetchFoodIds(incompleteFoodName) {
+module.exports = function (incompleteFoodName) {
     const options = {
         url:'https://api.spoonacular.com/recipes/autocomplete?number=100&query=' + incompleteFoodName + '&apiKey=' + apiKey,
         headers: {
@@ -11,11 +11,8 @@ function fetchFoodIds(incompleteFoodName) {
         },
         method: 'GET'
     }
-    console.log('BEFORE FIRST FETCH FOOD ID');
     return request(options).then(body => {
-        console.log('BEFORE FETCHING FOOD ID');
-        fetchFoodId(body, incompleteFoodName).then(foodIngredients => {
-            console.log('RETURNING FOOD ID');
+        return fetchFoodId(body, incompleteFoodName).then(foodIngredients => {
             return foodIngredients;
         }).catch(error => {
             console.log(error);
@@ -41,9 +38,12 @@ function fetchFoodId(foodIds, incompleteFoodName) {
             });
         }
     }
-    if (!found) {
+    if (!found && foodIds.JSON) {
         console.log('did not find exact, returning closest match '+ foodIdsJSON[0].id);
         return fetchFoodIngredients(foodIdsJSON[0].id);
+    } else {
+        console.log('We do not have info on this dish on our database. Sorry!');
+        return fetchFoodIngredients(null);
     }
 }
 
@@ -63,15 +63,12 @@ function fetchFoodIngredients(foodID) {
             itemJSON.push({name: item.name, amount: item.amount.metric});
             parsedJSON.push(itemJSON);
         }
-        return bodyJSON.ingredients;
+        return parsedJSON;
     }).catch(error => {
         console.log(error);
         return null;
     });
 }
-
-fetchFoodIds('spaghetti');
-
 
 
 
